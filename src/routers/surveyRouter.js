@@ -7,8 +7,8 @@ import {
 } from "../controllers/surveyController";
 
 const surveyRouter = express.Router();
-surveyRouter.get("/:id",surveySelected);
-surveyRouter.get("/:id/check",surveyCheck);
-surveyRouter.get("/:id/result",surveyResult);
+surveyRouter.get("/:id(\\d+)",surveySelected);
+surveyRouter.get("/:id(\\d+)/check",surveyCheck);
+surveyRouter.get("/:id(\\d+)/result",surveyResult);
 
 export default surveyRouter;
