@@ -1,11 +1,8 @@
-const fakeUser = {
-    username:"nuci",
-    loggedIn:true,
-};
 
-export const surveyList = (req,res) => 
-    res.render("home",{pageTitle:"Home" , fakeUser});
-    
+export const surveyList = (req,res) => {
+    const surveys = [1,2,3,4,5];
+    return res.render("home",{pageTitle:"Home",surveys});
+}
 export const surveySelected = (req,res) =>{
     console.log(req.params);
     return res.send("Selected Survey");
