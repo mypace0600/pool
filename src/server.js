@@ -4,7 +4,7 @@ import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import surveyRouter from "./routers/surveyRouter";
 
-const PORT = 7000;
+const PORT = 7001;
 const app = express();
 const logger = morgan("dev");
 app.use(logger);

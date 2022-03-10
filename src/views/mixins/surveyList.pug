@@ -1,8 +1,9 @@
-mixin survey(info)
+mixin surveyList(survey)
     div 
-        h4 #{info.title} !
+        h4 
+            a(href=`/survey/${survey.id}`)=survey.title
         img(src="#")
         ul
-            li #{info.rationg} /5
-            li #{info.people} people
-            li #{info.shared} shared
+            li #{survey.rating} /5
+            li #{survey.people} people
+            li #{survey.shared} shared

@@ -1,0 +1,9 @@
+extends base.pug
+
+block content 
+    h2 want to start survey?
+    form
+        button
+            a(href=`/survey/${survey.id}/check`) start
+        button 
+            a(href="/") back

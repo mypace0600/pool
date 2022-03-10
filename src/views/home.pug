@@ -4,8 +4,6 @@ include mixins/surveyList
 block content 
     h2 Now Trendings
     each potato in surveys
-        +survey(potato)
-       
-
+        +surveyList(potato)
     else 
         li Sorry nothing found.

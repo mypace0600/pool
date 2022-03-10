@@ -1,4 +1,13 @@
 extends base.pug
+include mixins/questionAnswer
 
 block content 
-    h2 check pleases
+    h2 Questions
+    div
+    each q in surveyQ
+        +questionAnswer(q)
+
+    div
+        button 
+            a(href=`/survey/${survey.id}/result`) submit
+        

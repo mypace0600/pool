@@ -3,7 +3,7 @@
 
 / -> home 
 /login -> login(kakao login api)
-/search -> list on popular survey
+/search 
 
 /user/logout
 /user/:id -> my profile & done survey
