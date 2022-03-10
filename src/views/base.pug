@@ -1,0 +1,21 @@
+doctype html
+html(lang="ko")
+    head
+        title #{pageTitle} | Survey 
+        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+
+    body 
+        header
+            nav
+                ul
+                    if fakeUser.loggedIn
+                        li 
+                            a(href="/logout") Log out
+                    else
+                        li 
+                            a(href="/login") Login
+            h1=pageTitle
+        main
+            block content 
+
+    include partials/footer.pug

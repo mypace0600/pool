@@ -2,7 +2,6 @@
 
 
 / -> home 
-/feedback -> feedback
 /login -> login(kakao login api)
 /search -> list on popular survey
 
