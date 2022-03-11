@@ -1,5 +1,5 @@
 
-const surveys = [
+let surveys = [
     {
         title:"knowledge workers",
         img: "#",
@@ -39,13 +39,17 @@ export const surveySelected = (req,res) =>{
     const survey=surveys[id-1];
     return res.render("selected",{pageTitle:`${survey.title}`,survey});
 };
-export const surveyCheck = (req,res)=>{
+export const getSurveyCheck = (req,res)=>{
     const {id} = req.params;
     const survey=surveys[id-1];
-    const surveyQ=[];
-    surveyQ.push(survey.questions);
+    const surveyQ=survey.questions;
     return res.render("check",{pageTitle:`${survey.title}`,surveyQ,survey});
 };
+export const postSurveyCheck = (req,res) =>{
+    const {id} = req.params;
+    console.dir(req.body);
+};
+
 export const surveyResult = (req,res)=>{
     res.render("result",{pageTitle:"result"});
 };

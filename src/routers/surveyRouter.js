@@ -2,13 +2,15 @@ import express from "express";
 
 import {
     surveySelected,
-    surveyCheck,
+    getSurveyCheck,
+    postSurveyCheck,
     surveyResult,
 } from "../controllers/surveyController";
 
 const surveyRouter = express.Router();
 surveyRouter.get("/:id(\\d+)",surveySelected);
-surveyRouter.get("/:id(\\d+)/check",surveyCheck);
+surveyRouter.route("/:id(\\d+)/check").get(getSurveyCheck).post(postSurveyCheck);
+
 surveyRouter.get("/:id(\\d+)/result",surveyResult);
 
 export default surveyRouter;

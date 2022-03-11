@@ -3,11 +3,13 @@ include mixins/questionAnswer
 
 block content 
     h2 Questions
-    div
-    each q in surveyQ
-        +questionAnswer(q)
+    form(method="POST")
+        ul
+        each q in surveyQ
+            +questionAnswer(q)
+        button(name="done") done 
 
     div
-        button 
-            a(href=`/survey/${survey.id}/result`) submit
-        
+        button
+            a(href="result") submit &rarr;
+    

@@ -1,23 +1,7 @@
 mixin questionAnswer(q)
-    div
-        ul
-            li 
-                span #{q.q1}
-                button(value=1) yes 
-                button(value=2) no
-            li 
-                span #{q.q2}
-                button(value=1) yes 
-                button(value=2) no
-            li 
-                span #{q.q3}
-                button(value=1) yes 
-                button(value=2) no
-            li 
-                span #{q.q4}
-                button(value=1) yes 
-                button(value=2) no
-            li 
-                span #{q.q5}
-                button(value=1) yes 
-                button(value=2) no
+    li 
+        span(id="q") #{q}
+        lable yes
+        input(name=`${q}`, id=`${q}`, type="radio",value=1)
+        lable no
+        input(name=`${q}`,id=`${q}`,type="radio",value=0)
