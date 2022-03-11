@@ -42,12 +42,23 @@ export const surveySelected = (req,res) =>{
 export const getSurveyCheck = (req,res)=>{
     const {id} = req.params;
     const survey=surveys[id-1];
-    const surveyQ=survey.questions;
-    return res.render("check",{pageTitle:`${survey.title}`,surveyQ,survey});
+    const surveyQ = survey.questions;
+    return res.render("check",{pageTitle:`${survey.title}`,survey,surveyQ});
 };
 export const postSurveyCheck = (req,res) =>{
     const {id} = req.params;
-    console.dir(req.body);
+    const result = Object.values(req.body);
+    let totalSum=0;
+    for(let i=0;i<result.length-1;i++){
+        totalSum+=Number(result[i]);
+    }
+    console.log(totalSum);
+
+
+    
+    
+    
+
 };
 
 export const surveyResult = (req,res)=>{

@@ -1,7 +1,7 @@
 mixin questionAnswer(q)
     li 
-        span(id="q") #{q}
+        span(id=`{$}`) #{q}
         lable yes
-        input(name=`${q}`, id=`${q}`, type="radio",value=1)
+        input(name=`${q}`, id="#{q}", type="radio",value=1)
         lable no
-        input(name=`${q}`,id=`${q}`,type="radio",value=0)
+        input(name=`${q}`,id="#{q}",type="radio",value=0)

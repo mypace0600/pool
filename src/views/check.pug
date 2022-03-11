@@ -5,8 +5,36 @@ block content
     h2 Questions
     form(method="POST")
         ul
-        each q in surveyQ
-            +questionAnswer(q)
+            li
+                span=surveyQ.q1              
+                lable yes
+                input(name="q1", id="q1", type="radio",value=1)
+                lable no
+                input(name="q1",id="q1",type="radio",value=0)
+            li
+                span=surveyQ.q2              
+                lable yes
+                input(name="q2", id="q2", type="radio",value=1)
+                lable no
+                input(name="q2",id="q2",type="radio",value=0)
+            li
+                span=surveyQ.q3              
+                lable yes
+                input(name="q3", id="q3", type="radio",value=1)
+                lable no
+                input(name="q3",id="q3",type="radio",value=0)
+            li
+                span=surveyQ.q4              
+                lable yes
+                input(name="q4", id="q4", type="radio",value=1)
+                lable no
+                input(name="q4",id="q4",type="radio",value=0)
+            li
+                span=surveyQ.q5              
+                lable yes
+                input(name="q5", id="q5", type="radio",value=1)
+                lable no
+                input(name="q5",id="q5",type="radio",value=0)
         button(name="done") done 
 
     div
