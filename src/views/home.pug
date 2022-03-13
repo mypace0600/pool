@@ -2,7 +2,6 @@ extends base.pug
 include mixins/surveyList
 
 block content 
-    h2 Now Trendings
     each potato in surveys
         +surveyList(potato)
     else 

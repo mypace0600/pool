@@ -1,14 +1,14 @@
 import express from "express";
 import {
     surveySearch,
-    surveyList
+    home
 } from "../controllers/surveyController";
 import {
     login
 } from "../controllers/userController";
 
 const globalRouter = express.Router();
-globalRouter.get("/", surveyList);
+globalRouter.get("/", home);
 globalRouter.get("/search",surveySearch);
 globalRouter.get("/login",login);
 

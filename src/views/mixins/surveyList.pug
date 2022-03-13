@@ -2,8 +2,11 @@ mixin surveyList(survey)
     div 
         h4 
             a(href=`/survey/${survey.id}/check`)=survey.title
-        img(src="#")
-        ul
-            li #{survey.rating} /5
-            li #{survey.people} people
-            li #{survey.shared} shared
+            div
+                p=survey.description 
+                ul
+                    li #{survey.rating}/5
+                    li #{survey.people} tested
+                    li #{survey.shared} shared
+                small=survey.createdAt 
+                hr
