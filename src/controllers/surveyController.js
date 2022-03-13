@@ -36,11 +36,6 @@ export const surveyList = (req,res) => {
     return res.render("home",{pageTitle:"Home",surveys});
 }
 
-export const surveySelected = (req,res) =>{
-    const {id} = req.params;
-    const survey=surveys[id-1];
-    return res.render("selected",{pageTitle:`${survey.title}`,survey});
-};
 export const getSurveyCheck = (req,res)=>{
     const {id} = req.params;
     const survey=surveys[id-1];

@@ -1,7 +1,7 @@
 mixin surveyList(survey)
     div 
         h4 
-            a(href=`/survey/${survey.id}`)=survey.title
+            a(href=`/survey/${survey.id}/check`)=survey.title
         img(src="#")
         ul
             li #{survey.rating} /5
