@@ -48,7 +48,6 @@ export const getSurveyCheck = (req,res)=>{
     return res.render("check",{pageTitle:`${survey.title}`,survey,surveyQ});
 };
 export const postSurveyCheck = (req,res) =>{
-    const {id} = req.params;
     const result = Object.values(req.body);
     let totalSum=0;
     for(let i=0;i<result.length-1;i++){
@@ -56,6 +55,7 @@ export const postSurveyCheck = (req,res) =>{
     }
     resultNum=totalSum;
     console.log(resultNum);
+    return res.render("result",{pageTitle:"result"});
 };
 
 export const surveyResult = (req,res)=>{
