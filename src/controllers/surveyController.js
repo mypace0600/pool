@@ -55,7 +55,7 @@ export const postSurveyCheck = (req,res) =>{
     }
     resultNum=totalSum;
     console.log(resultNum);
-    return res.render("result",{pageTitle:"result"});
+    return res.render("result",{pageTitle:"result",resultNum});
 };
 
 export const surveyResult = (req,res)=>{
