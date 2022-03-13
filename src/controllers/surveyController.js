@@ -48,17 +48,19 @@ export const getSurveyCheck = (req,res)=>{
     return res.render("check",{pageTitle:`${survey.title}`,survey,surveyQ});
 };
 export const postSurveyCheck = (req,res) =>{
+    const {id} = req.params;
+    console.log(id);
     const result = Object.values(req.body);
     let totalSum=0;
-    for(let i=0;i<result.length-1;i++){
+    for(let i=0;i<result.length;i++){
         totalSum+=Number(result[i]);
     }
     resultNum=totalSum;
     console.log(resultNum);
-    return res.render("result",{pageTitle:"result",resultNum});
+    return res.redirect("result");
 };
 
 export const surveyResult = (req,res)=>{
-    res.render("result",{pageTitle:"result"});
+    res.render("result",{pageTitle:"result",resultNum});
 };
 export const surveySearch = (req,res) =>res.send("Search Survey");
