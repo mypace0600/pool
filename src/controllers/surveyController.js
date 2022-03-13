@@ -30,6 +30,8 @@ let surveys = [
     },
 ];
 
+
+let resultNum;
 export const surveyList = (req,res) => {
     return res.render("home",{pageTitle:"Home",surveys});
 }
@@ -52,13 +54,8 @@ export const postSurveyCheck = (req,res) =>{
     for(let i=0;i<result.length-1;i++){
         totalSum+=Number(result[i]);
     }
-    console.log(totalSum);
-
-
-    
-    
-    
-
+    resultNum=totalSum;
+    console.log(resultNum);
 };
 
 export const surveyResult = (req,res)=>{
