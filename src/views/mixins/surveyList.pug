@@ -8,5 +8,8 @@ mixin surveyList(survey)
                     li #{survey.rating}/5
                     li #{survey.people} tested
                     li #{survey.shared} shared
-                small=survey.createdAt 
+                small=survey.createdAt
+                div
+                    button 
+                        a(href=`/survey/${survey.id}/delete`) Delete Survey &rarr;
                 hr

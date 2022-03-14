@@ -1,7 +1,6 @@
 import express from "express";
 import {
-    surveySearch,
-    home
+    home,search
 } from "../controllers/surveyController";
 import {
     login
@@ -9,7 +8,7 @@ import {
 
 const globalRouter = express.Router();
 globalRouter.get("/", home);
-globalRouter.get("/search",surveySearch);
+globalRouter.get("/search",search);
 globalRouter.get("/login",login);
 
 
