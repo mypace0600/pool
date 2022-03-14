@@ -30,12 +30,20 @@ export const postUpload = async (req, res) => {
 };
 
 
-export const getSurveyCheck = (req,res)=>{
+
+
+export const getSurveyCheck = async (req,res)=>{
     const {id} = req.params;
-    const survey=surveys[id-1];
+    const survey = await Survey.findById(id);
     const surveyQ = survey.questions;
-    return res.render("check",{pageTitle:`${survey.title}`,survey,surveyQ});
+    console.log(surveyQ);
+    const surveyQobj = {...surveyQ};
+    console.log(surveyQobj);
+    return res.render("check",{pageTitle:survey.title,survey,surveyQobj});
 };
+
+
+
 export const postSurveyCheck = (req,res) =>{
     const {id} = req.params;
     console.log(id);
