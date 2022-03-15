@@ -1,5 +1,6 @@
 import User from "../models/User"
 import bcrypt from "bcrypt";
+import { redirect } from "express/lib/response";
 
 export const getJoin = (req,res)=>{
     res.render("join",{pageTitle:"Join"});
@@ -54,6 +55,40 @@ export const postLogin = async (req,res) =>{
     req.session.user = user;
     return res.redirect("/");
 };
-export const logout = (req,res) =>res.send("log out");
+export const logout = (req, res) => {
+    req.session.destroy();
+    return res.redirect("/");
+};
+
+export const startKakaoLogin = (req,res)=>{
+    const REST_API_KEY=process.env.KAKAOREST_API_KEY;
+    const REDIRECT_URI=process.env.KAKAOREDIRECT_URI;
+    const baseUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    console.log(baseUrl);
+    return res.redirect(baseUrl);
+};
+
+export const finishKakaoLogin = async (req,res)=>{
+    const baseUrl = "https://kauth.kakao.com/oauth/token";
+    const config = {
+        grant_type:"authorization_code",
+        client_id:process.env.KAKAOREST_API_KEY,
+        redirect_uri:process.env.KAKAOREDIRECT_URI,
+        code:req.query.code,
+    };
+    console.log(config);
+    const params = new URLSearchParams(config).toString();
+    const finalUrl = `${baseUrl}?${params}`;
+    console.log(finalUrl)
+    const data = await fetch(finalUrl,{
+        method:"POST",
+        headers: {
+            Accept: "application/json",
+        },
+    });
+    const json = await data.json();
+    console.log(json);
+};
+
 export const profile = (req,res) =>res.send("my profile");
 export const myresults = (req,res)=>res.send("My Results");
