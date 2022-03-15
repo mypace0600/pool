@@ -22,7 +22,7 @@ export const postUpload = async (req, res) => {
         return res.redirect("/");
     } catch(error){
         console.log(errorMessage);
-        return res.render("upload", {
+        return res.status(400).render("upload", {
             pageTitle: "Upload Survey",
             errorMessage: error._message,
         });
@@ -33,7 +33,7 @@ export const getSurveyCheck = async (req,res)=>{
     const {id} = req.params;
     const survey = await Survey.findById(id);
     if(!survey){
-        return res.render("404",{pageTitle:"Nothing found"});
+        return res.status(404).render("404",{pageTitle:"Nothing found"});
     }
     const surveyQ = survey.questions;
     console.log(surveyQ);

@@ -1,7 +1,7 @@
 doctype html
 html(lang="ko")
     head
-        title #{pageTitle} | Pool 
+        title #{pageTitle} | #{siteName}
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
 
     body 
@@ -13,14 +13,25 @@ html(lang="ko")
                         a(href="/")
                             button Home
                     li 
-                        a(href="/survey/upload")
-                            button Upload
-                    li 
                         a(href="/search")
                             button Search
-                    li 
-                        a(href="/join")
-                            button Join
+                    if loggedIn
+                        li 
+                            a(href="/logout") 
+                                button Log Out
+                        li
+                            a(href="/my-profile")
+                                button #{loggedInUser.name}'s profile
+                        li 
+                            a(href="/survey/upload")
+                                button Upload
+                    else
+                        li
+                            a(href="/join")  
+                                button Join
+                        li
+                            a(href="/login")  
+                                button Login  
 
         main
             block content 
