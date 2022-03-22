@@ -1,20 +1,18 @@
 mixin surveyList(survey)
     div 
         h4 
+            a(href=`/survey/${survey.id}/check`)=survey.title
+
+        div
+            p=survey.description 
+            ul
+                li #{survey.rating}/5
+                li #{survey.people} tested
+                li #{survey.shared} shared
+            small=survey.createdAt
             if loggedIn
-                a(href=`/survey/${survey.id}/check`)=survey.title
-            else
-                span=survey.title
-            div
-                p=survey.description 
-                ul
-                    li #{survey.rating}/5
-                    li #{survey.people} tested
-                    li #{survey.shared} shared
-                small=survey.createdAt
-                if loggedIn
-                    div
-                        button                       
-                             a(href=`/survey/${survey.id}/delete`) Delete Survey &rarr;
-                        
-            hr
+                div
+                    button                       
+                            a(href=`/survey/${survey.id}/delete`) Delete Survey &rarr;
+                    
+        hr

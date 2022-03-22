@@ -3,6 +3,7 @@ import "./db";
 import "./models/Survey";
 import "./models/User";
 import app from "./server";
+import fetch from "node-fetch";
 
 const PORT = 7000;
 const handleListening = ()=> 

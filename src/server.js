@@ -7,7 +7,7 @@ import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import surveyRouter from "./routers/surveyRouter";
 import { localsMiddleware } from "./middlewares";
-
+import fetch from "node-fetch";
 
 const app = express();
 const logger = morgan("dev");
