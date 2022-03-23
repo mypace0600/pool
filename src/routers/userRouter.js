@@ -4,7 +4,9 @@ import {
     profile,
     myresults,
     startKakaoLogin,
-    finishKakaoLogin
+    finishKakaoLogin,
+    getEdit,
+    postEdit
 } from "../controllers/userController";
 
 const userRouter = express.Router();
@@ -12,6 +14,6 @@ userRouter.get("/logout",logout);
 userRouter.get(":id(\\d+)/results",myresults);
 userRouter.get("/kakao/start",startKakaoLogin);
 userRouter.get("/kakao/finish",finishKakaoLogin);
-userRouter.get(":id(\\d+)",profile);
+userRouter.route("/edit").get(getEdit).post(postEdit);
 
 export default userRouter;

@@ -20,7 +20,7 @@ html(lang="ko")
                             a(href="/user/logout") 
                                 button Log Out
                         li
-                            a(href="/my-profile")
+                            a(href="/user/edit")
                                 button #{loggedInUser.name}'s profile
                         li 
                             a(href="/survey/upload")
@@ -34,6 +34,7 @@ html(lang="ko")
                                 button Login  
 
         main
-            block content 
+            block content
+
 
     include partials/footer.pug

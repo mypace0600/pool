@@ -135,5 +135,11 @@ export const finishKakaoLogin = async (req,res)=>{
     }
 };
 
-export const profile = (req,res) =>res.send("my profile");
+export const getEdit = (req,res) =>{
+    return res.render("edit-profile",{pageTitle:"Edit Profile"});
+};
+
+export const postEdit = (req,res)=>{
+    return res.end();
+}
 export const myresults = (req,res)=>res.send("My Results");
