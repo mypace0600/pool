@@ -10,7 +10,7 @@ mixin surveyList(survey)
                 li #{survey.people} tested
                 li #{survey.shared} shared
             small=survey.createdAt
-            if loggedIn
+            if socialOnly
                 div
                     button                       
                             a(href=`/survey/${survey.id}/delete`) Delete Survey &rarr;

@@ -1,7 +1,4 @@
 import Survey from "../models/Survey"; 
-import Result from "../models/Results";
-import res from "express/lib/response";
-
 
 
 export const home = async (req,res) => {
@@ -31,26 +28,6 @@ export const postUpload = async (req, res) => {
     }
 };
 
-export const getResultUpload = (req,res) =>{
-    return res.render("result",{pageTitle:"Upload Result"});
-};
-
-export const postResultUpload = async (req,res)=>{
-    const {title,descriptions} = req.body;
-    try{
-        await Result.create({
-            title,
-            descriptions,
-        });
-        return res.redirect("/");
-    } catch(error){
-        console.log(errorMessage);
-        return res.status(400).render("result", {
-            pageTitle: "Upload Result",
-            errorMessage: error._message,
-        });
-    }
-};
 
 export const getSurveyCheck = async (req,res)=>{
     const {id} = req.params;
@@ -63,26 +40,27 @@ export const getSurveyCheck = async (req,res)=>{
     return res.render("check",{pageTitle:survey.title,survey,surveyQobj});
 };
 
-let resultNum;
 export const postSurveyCheck = (req,res) =>{
     const result = Object.values(req.body);
+    const len = result.length;
     let totalSum=0;
-    for(let i=0;i<result.length;i++){
+    for(let i=0;i<len;i++){
         totalSum+=Number(result[i]);
     }
-    resultNum=totalSum;
-    console.log(resultNum);
-    return res.render("result-page");
+    console.log(len,totalSum);
+    console.log(totalSum/len);
+    if(totalSum/len>0.75){
+        return res.render("veryGoodResultPage",{pageTitle:"Result",totalSum,len});
+    } else if(totalSum/len>0.5){
+        return res.render("goodResultPage",{pageTitle:"Result",totalSum,len});
+    }else if(totalSum/len>0){
+        return res.render("resultPage",{pageTitle:"Result",totalSum,len});
+    } else{
+        return res.status(404).render("404",{pageTitle:"Nothing found"});
+    }
 };
 
-export const surveyResult = async (req,res)=>{
-    const {id} = req.params;
-    console.log(id);
-    const survey = await Survey.findById(id);
-    const surveyQ = survey.questions;
-    let cnt = surveyQ.length;
-    res.render("result",{pageTitle:"result",resultNum,cnt});
-};
+
 
 export const getDelete = async (req,res)=>{
     const {id} = req.params;
