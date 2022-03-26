@@ -40,7 +40,9 @@ export const getSurveyCheck = async (req,res)=>{
     return res.render("check",{pageTitle:survey.title,survey,surveyQobj});
 };
 
-export const postSurveyCheck = (req,res) =>{
+export const postSurveyCheck = async (req,res) =>{
+    const {id} = req.params;
+    const survey = await Survey.findById(id);
     const result = Object.values(req.body);
     const len = result.length;
     let totalSum=0;
@@ -50,11 +52,11 @@ export const postSurveyCheck = (req,res) =>{
     console.log(len,totalSum);
     console.log(totalSum/len);
     if(totalSum/len>0.75){
-        return res.render("veryGoodResultPage",{pageTitle:"Result",totalSum,len});
+        return res.render("veryGoodResultPage",{pageTitle:survey.title,survey,totalSum,len});
     } else if(totalSum/len>0.5){
-        return res.render("goodResultPage",{pageTitle:"Result",totalSum,len});
-    }else if(totalSum/len>0){
-        return res.render("resultPage",{pageTitle:"Result",totalSum,len});
+        return res.render("goodResultPage",{pageTitle:survey.title,survey,totalSum,len});
+    }else if(totalSum/len>=0){
+        return res.render("resultPage",{pageTitle:survey.title,survey,totalSum,len});
     } else{
         return res.status(404).render("404",{pageTitle:"Nothing found"});
     }
