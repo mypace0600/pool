@@ -6,9 +6,7 @@ const surveySchema = new mongoose.Schema({
     createdAt:{type:Date, required:true, default:Date.now},
     questions:[{type:String, trim: true}],
     meta:{
-        rating: { type: Number, default: 0, required: true },
         people:{ type: Number, default: 0, required: true },
-        shared:{ type: Number, default: 0, required: true },
     }
 });
 

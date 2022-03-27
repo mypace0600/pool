@@ -1,4 +1,5 @@
 import Survey from "../models/Survey"; 
+import Counter from "../models/Counter";
 
 
 export const home = async (req,res) => {
@@ -79,4 +80,15 @@ export const search = async (req,res) =>{
     } 
     console.log(surveys);
     return res.render("search",{pageTitle:"Search",surveys});
+};
+
+export const registerView = async (req, res) => {
+    const { id } = req.params;
+    const survey = await Survey.findById(id);
+    if (!survey) {
+      return res.sendStatus(404);
+    }
+    survey.meta.views = survey.meta.views + 1;
+    await survey.save();
+    return res.sendStatus(200);
 };

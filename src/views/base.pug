@@ -3,7 +3,7 @@ html(lang="ko")
     head
         title #{pageTitle} | #{siteName}
         link(rel="stylesheet" href="https://unpkg.com/mvp.css")
-
+       
     body 
         header
             h1=pageTitle
@@ -21,14 +21,14 @@ html(lang="ko")
                                 button Log Out
                         li
                             a(href="/user/edit")
-                                button #{loggedInUser.name}'s profile
-                  
+                                div
+                                    img(src=`${loggedInUser.avatarUrl}`, width="100", height="100")     
                     else
                         li
                             a(href="/login")  
                                 button Login  
 
-        main
+        main#main
             block content
 
 

@@ -9,4 +9,39 @@ block content
         span 추천 컨텐츠
         a(href="https://www.youtube.com/channel/UCPzUihJpaxqgux4ihCx983A" target='_blank') 퇴사한 이형 &rarr;
 
+        a#kakao-link-btn(href='javascript:kakaoShare()')
+            img(src='https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png')
+  
+
+    script(src='//developers.kakao.com/sdk/js/kakao.min.js')
+    script(type='text/javascript').
+        Kakao.init("3cf1386dba977f6addcf85aabce71176");
+        console.log(Kakao.isInitialized());
+        function kakaoShare() {
+            Kakao.Link.createDefaultButton({
+                container:"#kakao-link-btn",
+                objectType: 'feed',
+                content: {
+                    title: '일잘러 테스트',
+                    description: '나는 과연 일잘러일까? 일 잘하는 사람들의 습관 테스트! 시작해봅시다~!',
+                    imageUrl: '카카오공유하기 시 썸네일 이미지 경로',
+                    link: {
+                        mobileWebUrl: '카카오공유하기 시 클릭 후 이동 경로',
+                        webUrl: '카카오공유하기 시 클릭 후 이동 경로',
+                    },
+                },
+                buttons: [{
+                    title: '웹으로 보기',
+                    link: {
+                        mobileWebUrl: '카카오공유하기 시 클릭 후 이동 경로',
+                        webUrl: '카카오공유하기 시 클릭 후 이동 경로',
+                    },
+                },],
+                // 카카오톡 미설치 시 카카오톡 설치 경로이동
+                installTalk: true,
+            })
+        }
+
+
+
     include partials/resultFooter.pug

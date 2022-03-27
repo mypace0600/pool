@@ -120,6 +120,7 @@ export const finishKakaoLogin = async (req,res)=>{
                     password:"",
                     socialOnly: true,
                     name:userRequest.kakao_account.profile.nickname,
+                    avatarUrl:userRequest.kakao_account.profile.thumbnail_image_url
                 });
                 console.log(user);
                 req.session.loggedIn = true;
@@ -136,10 +137,33 @@ export const finishKakaoLogin = async (req,res)=>{
 };
 
 export const getEdit = (req,res) =>{
-    return res.render("edit-profile",{pageTitle:"Edit Profile"});
+    return res.render("edit-profile",{pageTitle:"Edit Profile",user:req.session.user});
 };
 
-export const postEdit = (req,res)=>{
-    return res.end();
-}
+export const postEdit = async (req,res)=>{
+    console.log(req.session);
+    const {
+        session: {
+        user: { _id},
+        },
+        body: { name, email, username},
+    } = req;
+    try{
+        const updatedUser = await User.findByIdAndUpdate(
+            _id,
+            {
+            name,
+            email,
+            username,
+            },
+            { new: true }
+        );
+        req.session.user = updatedUser;
+        return res.redirect("/user/edit");
+    } catch(error){
+        console.log(error);
+        return res.status(400).redirect("/user/edit");
+    }
+};
+
 export const myresults = (req,res)=>res.send("My Results");
