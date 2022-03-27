@@ -6,6 +6,7 @@ import MongoStore from "connect-mongo";
 import rootRouter from "./routers/rootRouter";
 import userRouter from "./routers/userRouter";
 import surveyRouter from "./routers/surveyRouter";
+// import apiRouter from "./routers/apiRouter";
 import { localsMiddleware } from "./middlewares";
 import fetch from "node-fetch";
 
@@ -29,5 +30,6 @@ app.use(localsMiddleware);
 app.use("/",rootRouter);
 app.use("/user",userRouter);
 app.use("/survey",surveyRouter);
+// app.use("/api", apiRouter);
 
 export default app;
