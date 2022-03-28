@@ -1,17 +1,22 @@
 extends base.pug
-include mixins/questions
 
-block content 
-    h2 Questions
-    form(method="POST")
-        ul
-            each q, key in surveyQobj 
-                li= `${Number(key)+1}번 질문 ${q}`
-                lable yes
-                input(name=`${key}`, id=`${key}`, type="radio",value=1, required)
-                lable no
-                input(name=`${key}`,id=`${key}`,type="radio",value=0)
-
-        button(type="submit") submit &rarr;
-            
-    
+block content
+    div.checkContainer
+        div.checkTitle Questions
+        form(method="POST")
+            ul.radiogroup
+                each q, key in surveyQobj 
+                    li
+                        div.radioTitle
+                            div.radioTitleDetail
+                                div=`Q${Number(key)+1}` 
+                                div=`${q}`
+                        div.radio-pillbox
+                            div
+                                input(name=`${key}`, id=`Y${key}`, type="radio",value=1, required,checked="checked")
+                                label(for=`Y${key}`)  Yes
+                            div
+                                input(name=`${key}`,id=`N${key}`,type="radio",value=0)
+                                label(for=`N${key}`)  No
+            div
+                button(type="submit", class="button-3", role="button") Submit &rarr;

@@ -1,0 +1,17 @@
+header
+    div.left
+        a(href="/") 
+            div.button Survey Pool
+    div.right
+        if loggedIn
+            a(href="/user/logout") 
+                div.button Log Out
+
+            a(href="/user/edit")
+                div
+                    img(src=`${loggedInUser.avatarUrl}`)     
+        else
+            a(href="/login") 
+                div.button Login
+        a(href="/search") 
+            div.button.search Search

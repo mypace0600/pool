@@ -1,16 +1,16 @@
 mixin surveyList(survey)
-    div 
-        h4 
-            a(href=`/survey/${survey.id}/check`)=survey.title
-
-        div
-            p=survey.description 
-            ul
-                li #{survey.meta.people} tested
-            small=survey.createdAt
-            if socialOnly
+    div.container 
+        a(href=`/survey/${survey.id}/check`)
+            div.title=survey.title
+            div.photo
+                img(src="#")
+            div.details
+                div.descript
+                    div=survey.description
+                    div 테스트 시작!
+                div.count #{survey.meta.people} tested
+            
+            if(socialOnly)
                 div
                     button                       
                             a(href=`/survey/${survey.id}/delete`) Delete Survey &rarr;
-                    
-        hr
