@@ -1,0 +1,14 @@
+.profileContainer{
+    margin-top:200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .profileInput{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input{
+            margin-top: 20px;
+        }
+    }
+}

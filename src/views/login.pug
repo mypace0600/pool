@@ -4,6 +4,7 @@ extends base
 block content
     if errorMessage
         span=errorMessage
-    div 
+    div.loginContainer 
         form(method="POST")
-            a(href="/user/kakao/start") Start with Kakao
+            a(href="/user/kakao/start")
+                div.btn1 카카오로 로그인 하기

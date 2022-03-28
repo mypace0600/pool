@@ -2,10 +2,11 @@ extends base.pug
 include mixins/surveyList
 
 block content 
-    form(method="GET")
-        input(type="text", required, maxlength=80, name="keyword", placeholder="Survey Title ...")
-        button(type="submit", value="Search")
+    div.searchContainer
+        form(method="GET")
+            input(type="text", required, maxlength=80, name="keyword", placeholder="Survey Title ...", class="globalInput")
+            button.btn1(type="submit") Search
     
-    div 
-        each potato in surveys
-            +surveyList(potato)
+        div 
+            each potato in surveys
+                +surveyList(potato)
