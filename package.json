@@ -6,8 +6,12 @@
     "url": "git+https://github.com/mypace0600/pool.git"
   },
   "scripts": {
+    "start": "node build/init.js",
+    "build":"npm run build:server && npm run build:assets",
+    "build:server": "babel src -d build",
+    "build:assets":"webpack --mode=production",
     "dev:server": "nodemon",
-    "dev:assets": "webpack"
+    "dev:assets": "webpack --mode=development -w"
   },
   "author": "hyunus",
   "license": "MIT",
@@ -31,7 +35,8 @@
     "request-ip": "^2.1.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "babel-loader": "^8.2.4",
