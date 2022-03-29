@@ -3,7 +3,7 @@ mixin surveyList(survey)
         a(href=`/survey/${survey.id}/check`)
             div.title=survey.title
             div.photo
-                img(src="https://storage.cloud.google.com/testmypace0600/%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%981/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.JPG")
+                img(src="/"+survey.fileUrl)
             div.details
                 div.btn1
                     div=survey.description

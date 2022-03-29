@@ -8,6 +8,8 @@ import {
     getDelete,
 } from "../controllers/surveyController";
 
+import surveyPhoto from "../middlewares";
+
 const surveyRouter = express.Router();
 surveyRouter.route("/:id([0-9a-f]{24})/check").get(getSurveyCheck).post(postSurveyCheck);
 surveyRouter.route("/:id([0-9a-f]{24})/delete").get(getDelete);

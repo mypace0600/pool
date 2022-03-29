@@ -22,3 +22,10 @@ export const protectorMiddleware = (req, res, next) => {
       return res.redirect("/");
     }
   };
+
+  export const surveyPhoto = multer({
+    dest: "uploads/survey/",
+    limits: {
+      fileSize: 10000000,
+    },
+  });
