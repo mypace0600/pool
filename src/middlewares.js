@@ -26,6 +26,6 @@ export const protectorMiddleware = (req, res, next) => {
   export const surveyPhoto = multer({
     dest: "uploads/survey/",
     limits: {
-      fileSize: 10000000,
+      fileSize: 3000000,
     },
   });
