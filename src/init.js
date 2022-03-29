@@ -6,7 +6,7 @@ import "./models/User";
 import app from "./server";
 import fetch from "node-fetch";
 
-const PORT = 7000;
+const PORT = process.env.PORT || 7000;
 const handleListening = ()=> 
     console.log(`✅ Server listening on http://localhost:${PORT} 🚀`);
 app.listen(PORT,handleListening);
