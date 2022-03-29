@@ -7,7 +7,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: relative;
         .resultBoxTitle{
             font-size: 40px;
             margin-bottom: 20px;
@@ -19,11 +18,11 @@
             display: flex;
             justify-content:center;
             align-items: center;
-        }
-        .resultBoxText{
-            position: absolute;
-            bottom: 65%;
-            right: 20%;
+            img{
+                width: 95%;
+                height: 95%;
+                object-fit: scale-down;
+            }
         }
     }
 }

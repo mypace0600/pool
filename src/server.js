@@ -25,11 +25,11 @@ app.use(
         store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
     })
 );
+
 app.use(localsMiddleware);
 app.use("/static",express.static("assets"));
 app.use("/",rootRouter);
 app.use("/user",userRouter);
 app.use("/survey",surveyRouter);
-// app.use("/api", apiRouter);
 
 export default app;
