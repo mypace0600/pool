@@ -7,7 +7,7 @@ import {
     postUpload,
     getDelete,
 } from "../controllers/surveyController";
-
+import multer from "multer";
 import surveyPhoto from "../middlewares";
 
 const surveyRouter = express.Router();
