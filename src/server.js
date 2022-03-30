@@ -31,6 +31,5 @@ app.use("/static",express.static("assets"));
 app.use("/",rootRouter);
 app.use("/user",userRouter);
 app.use("/survey",surveyRouter);
-app.use("/uploads", express.static("uploads"));
 
 export default app;

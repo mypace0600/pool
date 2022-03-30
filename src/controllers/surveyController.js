@@ -11,13 +11,11 @@ export const getUpload = (req, res) => {
 };
 
 export const postUpload = async (req, res) => {
-    const { path: fileUrl } = req.file;
     const { title, description, questions } = req.body;
     try{
         await Survey.create({
             title,
             description,
-            fileUrl,
             questions:questions.split(",").map((word) => `${word}`),
         });
         return res.redirect("/");
